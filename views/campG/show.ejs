@@ -1,0 +1,105 @@
+<% layout('layouts/plot') %>
+<link rel="stylesheet" href="/stylesheet/stars.css">
+<div class="row">
+    <div class="col-6 mt-4">
+
+      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+  <% campD.image.forEach((img, i) => { %>
+    <div class="carousel-item <%= i === 0 ? 'active' : '' %>">
+      <img src="<%= img.url %>" class="d-block w-100" alt="...">
+    </div>
+        <% }) %>
+  
+  </div>
+  <% if(campD.image.length > 1) {%>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+  <% } %>
+</div>
+
+<div class="card mb-3">
+  <div class="card-body">
+    <h5 class="card-title"><%= campD.title %></h5>
+    <p class="card-text"><%= campD.desc %></p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><%= campD.location %></li>
+    <li class="list-group-item">By <%= campD.author.username %></li>
+    <li class="list-group-item">Price: <b>$</b><%= campD.price %></li>
+  </ul>
+  <div class="card-body">
+    <a href="/campG" class="btn btn-outline-info">All CampGrounds</a>
+        <% if(currentUser && campD.author.equals(currentUser)) {%>
+    <a href="/campG/<%= campD._id %>/edit" class="btn btn-outline-warning">Edit CampGrounds</a>
+    <form class="d-inline" action="/campG/<%= campD._id %>?_method=DELETE" method="post">
+        <button class="btn btn-outline-danger">Delete</button>
+    </form>
+    <% } %>
+  </div>
+</div>
+    </div>
+    
+    <div class="col-6 mt-4">
+      <div id="cluster-map" class="mb-3"></div>
+      <% if(currentUser) {%>
+      <h3 class="mt-2" style="color: white;">Leave a Review</h3>
+       <form action="/campG/<%= campD._id %>/rev" class="mb-3 vd-form" method="post" novalidate>
+
+<div class="star-scale-input">
+  <fieldset class="starability-basic">
+    <input type="radio" id="no-rate" class="input-no-rate" name="rev[rate]" value="1" checked aria-label="No rating." />
+    <input type="radio" id="first-rate1" name="rev[rate]" value="1" />
+    <label for="first-rate1" title="Terrible">1 star</label>
+    <input type="radio" id="first-rate2" name="rev[rate]" value="2" />
+    <label for="first-rate2" title="Not good">2 stars</label>
+    <input type="radio" id="first-rate3" name="rev[rate]" value="3" />
+    <label for="first-rate3" title="Average">3 stars</label>
+    <input type="radio" id="first-rate4" name="rev[rate]" value="4" />
+    <label for="first-rate4" title="Very good">4 stars</label>
+    <input type="radio" id="first-rate5" name="rev[rate]" value="5" />
+    <label for="first-rate5" title="Amazing">5 stars</label>
+  </fieldset>
+</div>
+
+    <div class="mb-3 mt-5">
+        <label class="form-label" for="body">Review</label>
+        <textarea class="form-control bg-dark" rows="5" id="body" name="rev[body]" required></textarea>
+        <div class="valid-feedback">Fair enough</div>
+    </div>
+    <button class="btn btn-outline-success">Add Review</button>
+</form>
+<% } %>
+<% for(let r of campD.review) {%>
+  <div class="card mb-3">
+<div class="card-body review-card-body">
+    <h5 class="card-title">Rating:</h5>
+  <p class="starability-result" data-rating="<%= r.rate %>">
+    Rated: <%= r.rate %> 
+  </p>
+    <p class="card-text">Review: <%= r.body %></p>
+    <h6 class="card-subtitle mb-2 text-muted">By <%= r.author.username %></h6>
+        <% if(currentUser && r.author.equals(currentUser)) {%>
+    <form action="/campG/<%= campD._id %>/reviews/<%= r._id %>?_method=DELETE" method="post">
+      <button class="btn btn-outline-danger btn-sm">Delete</button>
+    </form>
+    <% } %>
+    </div>
+<% } %>
+        </div>
+    </div>
+</div>
+
+
+<%-"<script>"%>
+const maptilerApiKey = '<%- process.env.MAPTILER_API_KEY %>';
+const campground = <%- JSON.stringify(campD) %>;
+<%-"</script>"%>
+
+<script src="/javaScript/showPageMap.js"></script>

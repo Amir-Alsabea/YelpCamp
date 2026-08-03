@@ -1,0 +1,42 @@
+#cluster-map {
+    width: 100%;
+    height: 400px;
+    margin: 0 auto;
+    margin-top: 30px;
+    overflow: hidden;
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.55),
+        0 0 20px rgba(196, 145, 75, 0.15);
+}
+
+#map {
+    width: 100%;
+    height: 300px;
+}
+
+/* Control container */
+.maplibregl-ctrl-group {
+    background: rgba(32, 32, 32, 0.9) !important;
+    border: 1px solid rgba(214, 161, 92, 0.4) !important;
+    border-radius: 12px !important;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,.35);
+}
+
+/* Buttons */
+.maplibregl-ctrl-group button {
+    background: transparent !important;
+    color: white !important;
+    width: 36px;
+    height: 36px;
+}
+
+/* Hover */
+.maplibregl-ctrl-group button:hover {
+    background: rgba(214,161,92,.15) !important;
+}
+
+/* Icons */
+.maplibregl-ctrl-icon {
+    filter: invert(85%) sepia(18%) saturate(600%) hue-rotate(340deg);
+}
