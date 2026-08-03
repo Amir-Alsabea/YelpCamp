@@ -4,13 +4,13 @@ YelpCamp is a full-stack web application for discovering, sharing, and reviewing
 
 ## Features
 
-- 🔐 **User Authentication** — secure registration and login with Passport.js
-- 🏕️ **Campground Management** — create, edit, and delete campground listings (author-only permissions)
-- 📸 **Image Uploads** — multi-image support via Cloudinary with in-browser deletion
-- 🗺️ **Interactive Maps** — geocoding and cluster maps powered by MapTiler
-- ⭐ **Reviews & Ratings** — star-based review system with per-user delete permissions
-- 🎨 **Custom Dark Theme** — Bootstrap 5 UI with a fully custom dark aesthetic
-- 🛡️ **Security** — Helmet CSP, input sanitization, and Joi-based server-side validation
+-  **User Authentication** — secure registration and login with Passport.js
+-  **Campground Management** — create, edit, and delete campground listings (author-only permissions)
+-  **Image Uploads** — multi-image support via Cloudinary with in-browser deletion
+-  **Interactive Maps** — geocoding and cluster maps powered by MapTiler
+-  **Reviews & Ratings** — star-based review system with per-user delete permissions
+-  **Custom Dark Theme** — Bootstrap 5 UI with a fully custom dark aesthetic
+-  **Security** — Helmet CSP, input sanitization, and Joi-based server-side validation
 
 ## Tech Stack
 
