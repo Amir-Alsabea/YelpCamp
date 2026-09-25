@@ -1,3 +1,4 @@
+<div align="center">
 # YelpCamp
 
 ![Node.js](https://img.shields.io/badge/Node.js-18%2B-339933?logo=node.js&logoColor=white)
@@ -11,6 +12,7 @@
 ![License](https://img.shields.io/badge/License-MIT-brightgreen)
 
 ![YelpCamp Screenshot](public/images/screenshot.png)
+</div>
 
 YelpCamp is a full-stack web application for discovering, sharing, and reviewing campgrounds. Built as a Yelp-style platform for the outdoors, it lets users browse a curated list of campgrounds, view them on an interactive cluster map, and share their own camping spots with photos, pricing, and location details.
 
